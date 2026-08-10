@@ -1,0 +1,324 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-sand: var(--sand);
+  --color-sand-foreground: var(--sand-foreground);
+  --color-gold: var(--gold);
+  --color-void: var(--void);
+  --color-cyan-glow: var(--cyan-glow);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --void: #080b12;
+  --cyan-glow: #4aa3ff;
+  --navy: oklch(0.246 0.048 254.5);
+  --navy-foreground: oklch(0.96 0.005 250);
+  --sand: oklch(0.943 0.014 85);
+  --sand-foreground: oklch(0.246 0.048 254.5);
+  --gold: oklch(0.71 0.107 78.5);
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.246 0.048 254.5);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --primary: var(--gold);
+  --primary-foreground: oklch(0.19 0.04 254.5);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--sand-foreground);
+  --muted: oklch(0.965 0.006 250);
+  --muted-foreground: oklch(0.52 0.028 253);
+  --accent: var(--sand);
+  --accent-foreground: var(--sand-foreground);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.01 250);
+  --input: oklch(0.88 0.012 250);
+  --ring: var(--gold);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter Tight", "Helvetica Neue", system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    font-size: 17px;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility eyebrow {
+  font-size: 0.8125rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@utility rule-line {
+  border-top: 1px solid color-mix(in oklch, currentColor 18%, transparent);
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes hero-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility hero-float {
+  animation: hero-float 5.5s ease-in-out infinite;
+}
+
+@utility hero-orbit {
+  transform-origin: 50% 50%;
+  animation: hero-orbit 28s linear infinite;
+}
+
+@utility hero-orbit-slow {
+  animation-duration: 42s;
+  animation-direction: reverse;
+}
+
+@utility hero-fade-up {
+  animation: hero-fade-up 0.9s ease-out both;
+}
+
+/* Parallax — Quem somos (Osmo layers pattern) */
+.parallax {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+}
+
+.parallax__header {
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  display: flex;
+  position: relative;
+}
+
+.parallax__visuals {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 120%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+}
+
+.parallax__layers {
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.parallax__layer-img {
+  pointer-events: none;
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 117.5%;
+  position: absolute;
+  top: -17.5%;
+  left: 0;
+}
+
+.parallax__layer-title {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.parallax__title {
+  pointer-events: auto;
+  text-align: center;
+  text-transform: none;
+  margin: 0 0.075em 0.1em 0;
+  font-family: var(--font-sans);
+  font-size: 11vw;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  position: relative;
+  color: #fff;
+}
+
+.parallax__fade {
+  z-index: 30;
+  --color-dark-rgb: 0, 0, 0;
+  background: linear-gradient(
+    to top,
+    rgba(var(--color-dark-rgb), 1) 0%,
+    rgba(var(--color-dark-rgb), 0.738) 19%,
+    rgba(var(--color-dark-rgb), 0.541) 34%,
+    rgba(var(--color-dark-rgb), 0.382) 47%,
+    rgba(var(--color-dark-rgb), 0.278) 56.5%,
+    rgba(var(--color-dark-rgb), 0.194) 65%,
+    rgba(var(--color-dark-rgb), 0.126) 73%,
+    rgba(var(--color-dark-rgb), 0.075) 80.2%,
+    rgba(var(--color-dark-rgb), 0.042) 86.1%,
+    rgba(var(--color-dark-rgb), 0.021) 91%,
+    rgba(var(--color-dark-rgb), 0.008) 95.2%,
+    rgba(var(--color-dark-rgb), 0.002) 98.2%,
+    transparent 100%
+  );
+  object-fit: cover;
+  width: 100%;
+  max-width: none;
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax__black-line-overflow {
+  z-index: 20;
+  background-color: #000;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+}
+
+.parallax__content {
+  padding: 6rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  display: flex;
+  position: relative;
+  background: #000;
+}
+
+.parallax__content-inner {
+  max-width: 42rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.parallax__mark {
+  width: 2.75rem;
+  height: auto;
+  margin-inline: auto;
+  margin-bottom: 1.75rem;
+  color: var(--gold);
+}
+
+.parallax__content-title {
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.parallax__content-text {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+@media (min-width: 768px) {
+  .parallax__content {
+    padding-block: 8rem;
+  }
+
+  .parallax__content-text {
+    font-size: 1.25rem;
+  }
+}

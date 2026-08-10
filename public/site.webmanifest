@@ -1,0 +1,27 @@
+{
+  "name": "Aura Labs",
+  "short_name": "Aura Labs",
+  "description": "Engenharia de IA e blockchain sob governança. Sistemas digitais proprietários para organizações que precisam de infraestrutura própria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080B12",
+  "theme_color": "#080B12",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/favicon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    }
+  ]
+}
