@@ -5,12 +5,6 @@ import {
   Bot,
   Blocks,
   Layers,
-  Target,
-  ShieldCheck,
-  GitBranch,
-  Database,
-  Activity,
-  Link2,
   Scale,
   FileSearch,
   ShieldAlert,
@@ -29,6 +23,8 @@ import { HeroVisual } from "@/components/aura/HeroVisual";
 import { SobreNos } from "@/components/aura/SobreNos";
 import { Portfolio } from "@/components/aura/Portfolio";
 import { Abordagem } from "@/components/aura/Abordagem";
+import { ColorChangeCards } from "@/components/ui/color-change-card";
+import { ScrollingFeatureShowcase } from "@/components/ui/interactive-scrolling-story-component";
 import {
   Carousel,
   CarouselContent,
@@ -202,36 +198,83 @@ const PUBLICO: { tag: string; t: string; d: string; icon: ReactNode }[] = [
   },
 ];
 
-const PILARES: { t: string; d: string; icon: ReactNode }[] = [
+const PILARES = [
   {
-    t: "Resultados e responsabilidade",
-    d: "Cada agente existe para um resultado de negócio mensurável, com dono claro do que acontece quando algo falha.",
-    icon: <Target className="h-6 w-6" strokeWidth={1.4} />,
+    heading: "Responsabilidade",
+    description:
+      "Cada agente existe para um resultado de negócio mensurável, com dono claro do que acontece quando algo falha.",
+    imgSrc:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    t: "Políticas e intervenção humana",
-    d: "Permissões, limites e pontos de tomada de controle humana definidos antes da automação entrar em produção.",
-    icon: <ShieldCheck className="h-6 w-6" strokeWidth={1.4} />,
+    heading: "Intervenção",
+    description:
+      "Permissões, limites e pontos de tomada de controle humana definidos antes da automação entrar em produção.",
+    imgSrc:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    t: "Orquestração e controles de fluxo",
-    d: "Caminhos, exceções e paradas controladas para que o sistema opere com previsibilidade, não por improviso.",
-    icon: <GitBranch className="h-6 w-6" strokeWidth={1.4} />,
+    heading: "Orquestração",
+    description:
+      "Caminhos, exceções e paradas controladas para que o sistema opere com previsibilidade, não por improviso.",
+    imgSrc:
+      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    t: "Dados, conhecimento e proveniência",
-    d: "Fontes confiáveis, contexto versionado e rastreio do que alimentou cada decisão do agente.",
-    icon: <Database className="h-6 w-6" strokeWidth={1.4} />,
+    heading: "Proveniência",
+    description:
+      "Fontes confiáveis, contexto versionado e rastreio do que alimentou cada decisão do agente.",
+    imgSrc:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    t: "Infraestrutura e observabilidade",
-    d: "Visibilidade contínua de comportamento, risco e desempenho para operar com segurança no dia a dia.",
-    icon: <Activity className="h-6 w-6" strokeWidth={1.4} />,
+    heading: "Observabilidade",
+    description:
+      "Visibilidade contínua de comportamento, risco e desempenho para operar com segurança no dia a dia.",
+    imgSrc:
+      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    t: "Blockchain quando fizer sentido",
-    d: "Camada de verificabilidade aplicada só quando o negócio realmente precisa provar origem, estado ou transferência.",
-    icon: <Link2 className="h-6 w-6" strokeWidth={1.4} />,
+    heading: "Blockchain",
+    description:
+      "Camada de verificabilidade aplicada só quando o negócio realmente precisa provar origem, estado ou transferência.",
+    imgSrc:
+      "https://images.unsplash.com/photo-1639763482991-beada21b6785?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
+const CASES_SLIDES = [
+  {
+    sector: "Fintech",
+    result: "Decisões 3x mais rápidas",
+    title: "Agentes de crédito com trilha auditável",
+    description:
+      "Automação governada com human-in-the-loop e registro completo de cada etapa da decisão.",
+    image: "/imagens%20gerais/case-fintech.png",
+  },
+  {
+    sector: "Gestora",
+    result: "Proveniência ponta a ponta",
+    title: "Tokenização com verificabilidade real",
+    description:
+      "Camada blockchain aplicada só onde a prova de origem e estado era requisito do negócio.",
+    image: "/imagens%20gerais/case-gestora.png",
+  },
+  {
+    sector: "Operações",
+    result: "Menos falha operacional",
+    title: "Orquestração de processos críticos",
+    description:
+      "Arquitetura sob medida com observabilidade e gates antes de qualquer entrada em produção.",
+    image: "/imagens%20gerais/case-operacoes.png",
+  },
+  {
+    sector: "Produto",
+    result: "IA sob governança",
+    title: "Sistemas proprietários com responsabilidade clara",
+    description:
+      "Do desenho à operação: políticas explícitas, auditoria contínua e dono claro do resultado.",
+    image: "/imagens%20gerais/case-produto.png",
   },
 ];
 
@@ -382,7 +425,7 @@ function Index() {
 
       <main id="top">
         {/* HERO */}
-        <section className="relative overflow-hidden bg-void text-white">
+        <section className="relative flex min-h-screen flex-col overflow-hidden bg-void text-white">
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(56,140,255,0.14),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(212,175,80,0.06),transparent_45%)]"
@@ -398,88 +441,84 @@ function Index() {
             }}
           />
 
-          {/* Desktop: imagem esquerda do topo à base da seção */}
-          <div
-            className="hero-fade-up absolute inset-y-0 left-0 z-[1] hidden w-[46%] lg:block"
-            style={{ animationDelay: "0.2s" }}
-          >
+          {/* Imagem: altura total; deslocada um pouco à esquerda sem mexer no texto */}
+          <div className="absolute top-0 right-0 bottom-0 z-[1] hidden w-[min(48vw,560px)] translate-x-[-3.5rem] xl:w-[min(50vw,620px)] xl:translate-x-[-4.5rem] lg:block">
             <HeroVisual />
           </div>
 
-          <div className="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-10 px-6 pb-8 pt-28 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6 lg:px-10 lg:pb-0 lg:pt-24">
-            {/* Mobile: mesma imagem no fluxo */}
-            <div
-              className="hero-fade-up relative -mx-2 aspect-[3/4] max-h-[70vh] overflow-hidden sm:mx-0 lg:invisible lg:pointer-events-none lg:absolute"
-              style={{ animationDelay: "0.2s" }}
-              aria-hidden="true"
-            >
-              <img
-                src="/imagens%20gerais/hero-aura-a.png"
-                alt=""
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
-
-            <div className="relative z-10 max-w-xl lg:col-start-2 lg:max-w-none lg:pl-4">
-              <p
-                className="hero-fade-up flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase"
-                style={{ animationDelay: "0.05s" }}
-              >
-                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6">
-                  <path d="M12 3 5 6v5c0 4.5 3 7.8 7 9 4-1.2 7-4.5 7-9V6l-7-3Z" />
-                </svg>
-                Agentes de IA sob sua governança.
-              </p>
-
-              <h1
-                className="hero-fade-up mt-6 font-sans text-[2.6rem] leading-[1.08] font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.75rem]"
-                style={{ animationDelay: "0.15s", fontFamily: "var(--font-sans)" }}
-              >
-                Tecnologia sob medida para negócios que{" "}
-                <span className="text-gold">querem construir o futuro.</span>
-              </h1>
-
-              <p
-                className="hero-fade-up mt-6 max-w-lg text-base leading-relaxed text-white/60 sm:text-lg"
-                style={{ animationDelay: "0.28s" }}
-              >
-                Sistemas proprietários com IA, agentes e blockchain sob governança.
-              </p>
-
-              <div
-                className="hero-fade-up mt-9 flex flex-wrap items-center gap-6"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <a
-                  href="#contato"
-                  className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
+          <div className="relative z-10 flex min-h-screen flex-col">
+            <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-10 px-6 pt-28 pb-8 lg:px-10 lg:pr-[min(50vw,640px)] lg:pt-24 lg:pb-0">
+              <div className="w-full max-w-2xl">
+                <p
+                  className="hero-fade-up flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase"
+                  style={{ animationDelay: "0.05s" }}
                 >
-                  Solicita orçamento
-                  <span aria-hidden="true">→</span>
-                </a>
-                <a
-                  href="#governanca"
-                  className="inline-flex items-center gap-2 border-b border-gold/70 pb-0.5 text-sm text-white/85 transition-colors hover:text-gold"
+                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6">
+                    <path d="M12 3 5 6v5c0 4.5 3 7.8 7 9 4-1.2 7-4.5 7-9V6l-7-3Z" />
+                  </svg>
+                  Agentes de IA sob sua governança.
+                </p>
+
+                <h1
+                  className="hero-fade-up mt-6 font-sans text-[2.6rem] leading-[1.12] font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]"
+                  style={{ animationDelay: "0.15s", fontFamily: "var(--font-sans)" }}
                 >
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full border border-gold/50 text-[10px] text-gold">
-                    ▶
-                  </span>
-                  Como governamos agentes de IA
-                </a>
+                  Tecnologia sob medida para negócios que{" "}
+                  <span className="text-gold">querem construir o futuro.</span>
+                </h1>
+
+                <p
+                  className="hero-fade-up mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg lg:text-xl"
+                  style={{ animationDelay: "0.28s" }}
+                >
+                  Sistemas proprietários com IA, agentes e blockchain sob governança.
+                </p>
+
+                <div
+                  className="hero-fade-up mt-9 flex flex-wrap items-center gap-6"
+                  style={{ animationDelay: "0.4s" }}
+                >
+                  <a
+                    href="#contato"
+                    className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
+                  >
+                    Solicita orçamento
+                    <span aria-hidden="true">→</span>
+                  </a>
+                  <a
+                    href="#governanca"
+                    className="inline-flex items-center gap-2 border-b border-gold/70 pb-0.5 text-sm text-white/85 transition-colors hover:text-gold"
+                  >
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full border border-gold/50 text-[10px] text-gold">
+                      ▶
+                    </span>
+                    Como governamos agentes de IA
+                  </a>
+                </div>
+              </div>
+
+              {/* Mobile: mesma imagem em proporção vertical */}
+              <div className="w-full lg:hidden">
+                <div className="relative mx-auto aspect-[9/16] max-h-[70vh] w-full max-w-sm overflow-hidden">
+                  <img
+                    src="/imagens%20gerais/hero-aura-a.png?v=portrait"
+                    alt=""
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl border-t border-white/10 px-6 py-6 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:px-10">
-            <div className="hidden lg:block" aria-hidden="true" />
-            <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-2 lg:gap-8 xl:grid-cols-4">
-              {HERO_FEATURES.map((f) => (
-                <li key={f.label} className="flex items-center gap-3 text-base text-white/80">
-                  <span className="shrink-0 text-white/55">{f.icon}</span>
-                  <span className="leading-snug">{f.label}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="relative z-20 mx-auto w-full max-w-7xl border-t border-white/10 px-6 py-6 lg:px-10">
+              <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+                {HERO_FEATURES.map((f) => (
+                  <li key={f.label} className="flex items-center gap-3 text-base text-white/80">
+                    <span className="shrink-0 text-white/55">{f.icon}</span>
+                    <span className="leading-snug">{f.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -673,23 +712,8 @@ function Index() {
               </p>
             </div>
 
-            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {PILARES.map((p) => (
-                <article
-                  key={p.t}
-                  className="group flex min-h-[240px] flex-col justify-between bg-white/[0.04] p-7 transition-colors duration-300 hover:bg-white/[0.08] sm:p-8"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center text-gold transition-transform duration-500 group-hover:scale-105">
-                    {p.icon}
-                  </span>
-                  <div className="mt-10">
-                    <h3 className="text-2xl leading-snug sm:text-[1.65rem]">{p.t}</h3>
-                    <p className="mt-4 text-base leading-relaxed text-white/60 sm:text-lg">
-                      {p.d}
-                    </p>
-                  </div>
-                </article>
-              ))}
+            <div className="mt-16">
+              <ColorChangeCards items={PILARES} />
             </div>
 
             <div className="mt-24">
@@ -724,80 +748,7 @@ function Index() {
 
         <Abordagem />
 
-        <section id="cases" className="bg-sand py-28 text-sand-foreground">
-          <div className="mx-auto max-w-6xl px-6">
-            <p className="eyebrow text-gold">Cases de sucesso</p>
-            <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-              <h2 className="max-w-3xl text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                Resultados reais, sob governança.
-              </h2>
-              <p className="max-w-md text-xl leading-relaxed text-sand-foreground/70 lg:justify-self-end">
-                Exemplos de como sistemas proprietários da Aura Labs geram impacto mensurável
-                sem abrir mão de controle, auditoria e responsabilidade.
-              </p>
-            </div>
-
-            <div className="mt-16 grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  sector: "Fintech",
-                  title: "Agentes de crédito com trilha auditável",
-                  result: "Decisões 3x mais rápidas",
-                  detail:
-                    "Automação governada com human-in-the-loop e registro completo de cada etapa.",
-                  image: "/imagens%20gerais/servico-agentes.png",
-                },
-                {
-                  sector: "Gestora",
-                  title: "Tokenização com verificabilidade real",
-                  result: "Proveniência ponta a ponta",
-                  detail:
-                    "Camada blockchain aplicada só onde a prova de origem e estado era requisito.",
-                  image: "/imagens%20gerais/servico-blockchain.png",
-                },
-                {
-                  sector: "Operações",
-                  title: "Orquestração de processos críticos",
-                  result: "Menos falha operacional",
-                  detail:
-                    "Arquitetura sob medida com observabilidade e gates antes de produção.",
-                  image: "/imagens%20gerais/servico-arquitetura.png",
-                },
-              ].map((c) => (
-                <article
-                  key={c.title}
-                  className="group flex flex-col overflow-hidden border border-sand-foreground/10 bg-background text-foreground"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-navy">
-                    <img
-                      src={c.image}
-                      alt=""
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-void/70 to-transparent" />
-                    <span className="absolute top-4 left-4 eyebrow text-gold">{c.sector}</span>
-                  </div>
-                  <div className="flex flex-1 flex-col p-6 sm:p-7">
-                    <p className="text-sm font-semibold tracking-wide text-gold uppercase">
-                      {c.result}
-                    </p>
-                    <h3 className="mt-3 text-2xl leading-snug">{c.title}</h3>
-                    <p className="mt-4 flex-1 text-base leading-relaxed text-muted-foreground">
-                      {c.detail}
-                    </p>
-                    <a
-                      href="#contato"
-                      className="mt-7 inline-flex w-fit items-center gap-2 text-sm font-medium tracking-wide text-foreground transition-colors hover:text-gold"
-                    >
-                      Conversar sobre um case
-                      <span aria-hidden="true">→</span>
-                    </a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ScrollingFeatureShowcase slides={CASES_SLIDES} />
 
         {/* CONTATO */}
         <section id="contato" className="relative overflow-hidden bg-void py-28 text-white">
