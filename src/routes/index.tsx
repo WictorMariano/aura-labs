@@ -91,7 +91,7 @@ export const Route = createFileRoute("/")({
 const NAV = [
   { href: "#sobre", label: "Quem somos" },
   { href: "#servicos", label: "Serviços" },
-  { href: "#time", label: "Time" },
+  { href: "#equipe", label: "Equipe" },
   { href: "#portfolio", label: "Portfólio" },
   { href: "#governanca", label: "Governança" },
   { href: "#abordagem", label: "Abordagem" },
@@ -103,6 +103,7 @@ const SERVICOS: {
   t: string;
   d: string;
   tag: string;
+  chips?: string[];
   icon: ReactNode;
   image: string;
   exemploHref: string;
@@ -111,32 +112,36 @@ const SERVICOS: {
     t: "Inteligência artificial aplicada",
     d: "IA projetada a partir do resultado de negócio esperado, não da tecnologia disponível. Cada sistema nasce de um desafio concreto da organização.",
     tag: "IA",
+    chips: ["LLMs personalizadas"],
     icon: <BrainCircuit className="h-6 w-6" strokeWidth={1.4} />,
-    image: "/imagens%20gerais/servico-ia.png",
+    image: "/imagens%20gerais/servico-ia-mockup.png",
     exemploHref: "#contato",
   },
   {
     t: "Agentes de IA governados",
     d: "Agentes que operam sob políticas, permissões e intervenção humana explícitas, com trilha de auditoria e métricas de resultado desde o desenho.",
     tag: "Agentes",
+    chips: ["Agentes autônomos"],
     icon: <Bot className="h-6 w-6" strokeWidth={1.4} />,
-    image: "/imagens%20gerais/servico-agentes.png",
+    image: "/imagens%20gerais/servico-agentes-mockup.png",
     exemploHref: "#contato",
   },
   {
     t: "Blockchain e ativos digitais",
     d: "Aplicado quando a verificabilidade é requisito real do negócio, nunca como camada decorativa sobre um problema que não a exige.",
     tag: "Blockchain",
+    chips: ["Integração Web3"],
     icon: <Blocks className="h-6 w-6" strokeWidth={1.4} />,
-    image: "/imagens%20gerais/servico-blockchain.png",
+    image: "/imagens%20gerais/servico-blockchain-mockup.png",
     exemploHref: "#contato",
   },
   {
     t: "Arquitetura sob medida",
     d: "Engenharia proprietária para organizações com necessidades que produtos de prateleira não atendem, integrada à realidade de cada operação.",
     tag: "Software",
+    chips: ["Softwares + IA sob demanda"],
     icon: <Layers className="h-6 w-6" strokeWidth={1.4} />,
-    image: "/imagens%20gerais/servico-arquitetura.png",
+    image: "/imagens%20gerais/servico-arquitetura-mockup.png",
     exemploHref: "#contato",
   },
 ];
@@ -148,20 +153,6 @@ const TIME = [
     bio: "Conduz a visão de negócio e a tradução de desafios complexos em sistemas digitais sob governança.",
     initials: "BV",
     photo: "/team/bruno-velloso.png",
-  },
-  {
-    name: "Conrado Eugine",
-    role: "Engenharia & Produto",
-    bio: "Lidera a construção técnica, da arquitetura de agentes ao desenho de sistemas proprietários.",
-    initials: "CE",
-    photo: "/team/conrado-eugine.png",
-  },
-  {
-    name: "Luiz",
-    role: "Operações & Entrega",
-    bio: "Garante que cada projeto saia do desenho e chegue à operação com ritmo, clareza e responsabilidade.",
-    initials: "L",
-    photo: "/team/luiz.png",
   },
 ];
 
@@ -203,43 +194,37 @@ const PILARES = [
     heading: "Responsabilidade",
     description:
       "Cada agente existe para um resultado de negócio mensurável, com dono claro do que acontece quando algo falha.",
-    imgSrc:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    imgSrc: "/imagens%20gerais/case-produto.png",
   },
   {
     heading: "Intervenção",
     description:
       "Permissões, limites e pontos de tomada de controle humana definidos antes da automação entrar em produção.",
-    imgSrc:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    imgSrc: "/imagens%20gerais/case-fintech.png",
   },
   {
     heading: "Orquestração",
     description:
       "Caminhos, exceções e paradas controladas para que o sistema opere com previsibilidade, não por improviso.",
-    imgSrc:
-      "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1200&q=80",
+    imgSrc: "/imagens%20gerais/case-operacoes.png",
   },
   {
     heading: "Proveniência",
     description:
       "Fontes confiáveis, contexto versionado e rastreio do que alimentou cada decisão do agente.",
-    imgSrc:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
+    imgSrc: "/imagens%20gerais/servico-ia.png",
   },
   {
     heading: "Observabilidade",
     description:
       "Visibilidade contínua de comportamento, risco e desempenho para operar com segurança no dia a dia.",
-    imgSrc:
-      "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
+    imgSrc: "/imagens%20gerais/servico-arquitetura.png",
   },
   {
     heading: "Blockchain",
     description:
       "Camada de verificabilidade aplicada só quando o negócio realmente precisa provar origem, estado ou transferência.",
-    imgSrc:
-      "https://images.unsplash.com/photo-1639763482991-beada21b6785?auto=format&fit=crop&w=1200&q=80",
+    imgSrc: "/imagens%20gerais/case-blockchain.png",
   },
 ];
 
@@ -250,7 +235,7 @@ const CASES_SLIDES = [
     title: "Agentes de crédito com trilha auditável",
     description:
       "Automação governada com human-in-the-loop e registro completo de cada etapa da decisão.",
-    image: "/imagens%20gerais/case-fintech.png",
+    mockup: "credito" as const,
   },
   {
     sector: "Gestora",
@@ -258,7 +243,7 @@ const CASES_SLIDES = [
     title: "Tokenização com verificabilidade real",
     description:
       "Camada blockchain aplicada só onde a prova de origem e estado era requisito do negócio.",
-    image: "/imagens%20gerais/case-gestora.png",
+    mockup: "tokenizacao" as const,
   },
   {
     sector: "Operações",
@@ -266,15 +251,15 @@ const CASES_SLIDES = [
     title: "Orquestração de processos críticos",
     description:
       "Arquitetura sob medida com observabilidade e gates antes de qualquer entrada em produção.",
-    image: "/imagens%20gerais/case-operacoes.png",
+    mockup: "orquestracao" as const,
   },
   {
-    sector: "Produto",
-    result: "IA sob governança",
-    title: "Sistemas proprietários com responsabilidade clara",
+    sector: "Segurança",
+    result: "Acesso sob governança",
+    title: "MFA multi autenticação para sistemas críticos",
     description:
-      "Do desenho à operação: políticas explícitas, auditoria contínua e dono claro do resultado.",
-    image: "/imagens%20gerais/case-produto.png",
+      "Camadas de verificação (TOTP, chave física e políticas) para proteger contas e operações sensíveis.",
+    mockup: "mfa" as const,
   },
 ];
 
@@ -335,10 +320,10 @@ function Index() {
 
   return (
     <div className="min-h-screen">
-      <header className="fixed inset-x-0 top-0 z-50 bg-void/80 backdrop-blur-md">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-void/90 backdrop-blur-md">
         <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-6 lg:px-10">
           <a href="#top" className="text-white">
-            <Logo />
+            <Logo variant="light" />
           </a>
           <button
             type="button"
@@ -426,61 +411,42 @@ function Index() {
       <main id="top">
         {/* HERO */}
         <section className="relative flex min-h-screen flex-col overflow-hidden bg-void text-white">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,rgba(56,140,255,0.14),transparent_55%),radial-gradient(ellipse_at_20%_80%,rgba(212,175,80,0.06),transparent_45%)]"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] opacity-[0.18]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(120,170,255,0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(120,170,255,0.35) 1px, transparent 1px)",
-              backgroundSize: "64px 64px",
-              maskImage: "linear-gradient(to top, black, transparent)",
-            }}
-          />
-
-          {/* Imagem: altura total; deslocada um pouco à esquerda sem mexer no texto */}
-          <div className="absolute top-0 right-0 bottom-0 z-[1] hidden w-[min(48vw,560px)] translate-x-[-3.5rem] xl:w-[min(50vw,620px)] xl:translate-x-[-4.5rem] lg:block">
+          {/* Imagem/símbolo oficial: coluna direita, altura total */}
+          <div className="absolute top-0 right-0 bottom-0 z-[1] hidden w-[min(46vw,540px)] translate-x-[-2rem] xl:w-[min(48vw,600px)] xl:translate-x-[-3rem] lg:block">
             <HeroVisual />
           </div>
 
           <div className="relative z-10 flex min-h-screen flex-col">
-            <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-10 px-6 pt-28 pb-8 lg:px-10 lg:pr-[min(50vw,640px)] lg:pt-24 lg:pb-0">
+            <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center gap-10 px-6 pt-28 pb-8 lg:px-10 lg:pr-[min(48vw,580px)] lg:pt-24 lg:pb-0">
               <div className="w-full max-w-2xl">
                 <p
-                  className="hero-fade-up flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase"
+                  className="hero-fade-up eyebrow text-gold"
                   style={{ animationDelay: "0.05s" }}
                 >
-                  <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.6">
-                    <path d="M12 3 5 6v5c0 4.5 3 7.8 7 9 4-1.2 7-4.5 7-9V6l-7-3Z" />
-                  </svg>
                   Agentes de IA sob sua governança.
                 </p>
 
                 <h1
-                  className="hero-fade-up mt-6 font-sans text-[2.6rem] leading-[1.12] font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.5rem] xl:text-[3.75rem]"
-                  style={{ animationDelay: "0.15s", fontFamily: "var(--font-sans)" }}
+                  className="hero-fade-up mt-8 font-sans text-[2.5rem] leading-[1.12] font-semibold tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.4rem] xl:text-[3.65rem]"
+                  style={{ animationDelay: "0.15s" }}
                 >
-                  Tecnologia sob medida para negócios que{" "}
-                  <span className="text-gold">querem construir o futuro.</span>
+                  Tecnologia sob medida para negócios que querem construir o futuro.
                 </h1>
 
                 <p
-                  className="hero-fade-up mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg lg:text-xl"
+                  className="hero-fade-up mt-7 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg"
                   style={{ animationDelay: "0.28s" }}
                 >
                   Sistemas proprietários com IA, agentes e blockchain sob governança.
                 </p>
 
                 <div
-                  className="hero-fade-up mt-9 flex flex-wrap items-center gap-6"
+                  className="hero-fade-up mt-10 flex flex-wrap items-center gap-6"
                   style={{ animationDelay: "0.4s" }}
                 >
                   <a
                     href="#contato"
-                    className="inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3.5 text-sm font-semibold tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
+                    className="inline-flex items-center gap-2 bg-gold px-7 py-3.5 text-sm font-semibold tracking-wide text-primary-foreground transition-opacity hover:opacity-90"
                   >
                     Solicita orçamento
                     <span aria-hidden="true">→</span>
@@ -489,21 +455,17 @@ function Index() {
                     href="#governanca"
                     className="inline-flex items-center gap-2 border-b border-gold/70 pb-0.5 text-sm text-white/85 transition-colors hover:text-gold"
                   >
-                    <span className="flex h-5 w-5 items-center justify-center rounded-full border border-gold/50 text-[10px] text-gold">
-                      ▶
-                    </span>
                     Como governamos agentes de IA
                   </a>
                 </div>
               </div>
 
-              {/* Mobile: mesma imagem em proporção vertical */}
               <div className="w-full lg:hidden">
-                <div className="relative mx-auto aspect-[9/16] max-h-[70vh] w-full max-w-sm overflow-hidden">
+                <div className="relative mx-auto flex aspect-square max-h-[55vh] w-full max-w-sm items-center justify-center">
                   <img
-                    src="/imagens%20gerais/hero-aura-a.png?v=portrait"
+                    src="/brand/aura-symbol-negative.svg"
                     alt=""
-                    className="h-full w-full object-cover object-center"
+                    className="h-full w-full object-contain p-6"
                   />
                 </div>
               </div>
@@ -512,8 +474,8 @@ function Index() {
             <div className="relative z-20 mx-auto w-full max-w-7xl border-t border-white/10 px-6 py-6 lg:px-10">
               <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
                 {HERO_FEATURES.map((f) => (
-                  <li key={f.label} className="flex items-center gap-3 text-base text-white/80">
-                    <span className="shrink-0 text-white/55">{f.icon}</span>
+                  <li key={f.label} className="flex items-center gap-3 text-base text-white/75">
+                    <span className="shrink-0 text-gold">{f.icon}</span>
                     <span className="leading-snug">{f.label}</span>
                   </li>
                 ))}
@@ -562,6 +524,18 @@ function Index() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-7 sm:p-8">
+                    {s.chips?.length ? (
+                      <div className="mb-4 flex flex-wrap gap-2">
+                        {s.chips.map((chip) => (
+                          <span
+                            key={chip}
+                            className="inline-flex border border-sand-foreground/15 bg-sand-foreground/[0.04] px-3 py-1 text-[11px] font-medium tracking-wide text-sand-foreground/75 uppercase"
+                          >
+                            {chip}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
                     <h3 className="text-2xl leading-snug sm:text-3xl">{s.t}</h3>
                     <p className="mt-4 flex-1 text-base leading-relaxed text-sand-foreground/65 sm:text-lg">
                       {s.d}
@@ -584,11 +558,11 @@ function Index() {
         <section id="para-quem" className="relative overflow-hidden bg-navy py-28 text-navy-foreground">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-20 top-0 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(74,163,255,0.18),transparent_65%)]"
+            className="pointer-events-none absolute -left-20 top-0 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(200,149,56,0.12),transparent_65%)]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-16 bottom-0 h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle,rgba(212,175,80,0.12),transparent_65%)]"
+            className="pointer-events-none absolute -right-16 bottom-0 h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle,rgba(240,200,108,0.08),transparent_65%)]"
           />
           <div className="relative mx-auto max-w-6xl px-6">
             <div className="mx-auto max-w-3xl text-center">
@@ -637,18 +611,20 @@ function Index() {
           </div>
         </section>
 
-        {/* TIME */}
-        <section id="time" className="bg-background py-28">
+        {/* EQUIPE */}
+        <section id="equipe" className="bg-background py-28">
           <div className="mx-auto max-w-6xl px-6">
-            <SectionLabel>Time</SectionLabel>
-            <h2 className="mt-8 max-w-2xl text-4xl leading-tight sm:text-5xl lg:text-6xl">
-              Quem constrói a Aura Labs.
-            </h2>
-            <p className="mt-6 max-w-xl text-xl leading-relaxed text-muted-foreground">
-              Um time enxuto, com domínio técnico e responsabilidade direta pelo que entrega.
-            </p>
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionLabel className="text-center">Equipe</SectionLabel>
+              <h2 className="mt-8 text-4xl leading-tight sm:text-5xl lg:text-6xl">
+                Quem constrói a Aura Labs.
+              </h2>
+              <p className="mx-auto mt-6 max-w-xl text-xl leading-relaxed text-muted-foreground">
+                Um time enxuto, com domínio técnico e responsabilidade direta pelo que entrega.
+              </p>
+            </div>
 
-            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            <div className="mx-auto mt-16 grid max-w-sm gap-6">
               {TIME.map((person) => (
                 <article
                   key={person.name}
@@ -695,17 +671,15 @@ function Index() {
         <section id="governanca" className="relative overflow-hidden bg-void py-28 text-white">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(74,163,255,0.16),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(212,175,80,0.1),transparent_45%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(200,149,56,0.1),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(240,200,108,0.06),transparent_45%)]"
           />
           <div className="relative mx-auto max-w-6xl px-6">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-              <div>
-                <p className="eyebrow text-gold">Governança</p>
-                <h2 className="mt-8 max-w-3xl text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                  Agentes de IA sob sua governança.
-                </h2>
-              </div>
-              <p className="max-w-xl text-xl leading-relaxed text-white/65 lg:justify-self-end">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="eyebrow text-gold">Governança</p>
+              <h2 className="mt-8 text-4xl leading-tight sm:text-5xl lg:text-6xl">
+                Agentes de IA sob sua governança.
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-white/65">
                 Governar agentes é decidir, antes da automação, quem responde pelo resultado, o que o
                 agente pode fazer, como cada decisão fica rastreável e em que ponto uma pessoa assume
                 o controle.
@@ -751,16 +725,12 @@ function Index() {
         <ScrollingFeatureShowcase slides={CASES_SLIDES} />
 
         {/* CONTATO */}
-        <section id="contato" className="relative overflow-hidden bg-void py-28 text-white">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,80,0.12),transparent_45%),radial-gradient(ellipse_at_bottom_left,rgba(74,163,255,0.1),transparent_50%)]"
-          />
+        <section id="contato" className="relative overflow-hidden bg-sand py-20 sm:py-28">
           <div className="relative mx-auto max-w-6xl px-6">
-            <div className="grid gap-14 lg:grid-cols-[0.95fr_1.15fr] lg:items-start lg:gap-16">
-              <div>
+            <div className="grid overflow-hidden lg:grid-cols-2 lg:items-stretch">
+              <div className="bg-navy px-8 py-12 text-navy-foreground sm:px-10 sm:py-14 lg:px-12 lg:py-16">
                 <SectionLabel>Contato</SectionLabel>
-                <h2 className="mt-8 max-w-md text-4xl leading-tight sm:text-5xl lg:text-6xl">
+                <h2 className="mt-8 max-w-md text-4xl leading-tight sm:text-5xl">
                   Comece pelo desafio, não pela tecnologia.
                 </h2>
                 <p className="mt-6 max-w-md text-lg leading-relaxed text-white/60">
@@ -788,7 +758,9 @@ function Index() {
                 </div>
               </div>
 
-              <ContactForm />
+              <div className="bg-void px-8 py-12 text-white sm:px-10 sm:py-14 lg:px-12 lg:py-16">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </section>
@@ -797,11 +769,8 @@ function Index() {
       <footer className="bg-navy py-16 text-navy-foreground">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-wrap items-center justify-between gap-6">
-            <Logo />
+            <Logo variant="light" />
             <p className="eyebrow text-navy-foreground/50">Engenharia de IA e blockchain</p>
-          </div>
-          <div className="mt-10 border-t border-navy-foreground/15 pt-6">
-            <p className="text-sm text-navy-foreground/50">Aura Labs</p>
           </div>
         </div>
       </footer>

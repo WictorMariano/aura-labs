@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { CaseMockup, type CaseMockupId } from "@/components/aura/CaseMockups";
 
 export type StorySlide = {
   title: string;
   description: string;
-  image: string;
+  mockup: CaseMockupId;
   sector?: string;
   result?: string;
   bgColor?: string;
@@ -37,8 +38,12 @@ export function ScrollingFeatureShowcase({
         return;
       }
       const scrolled = Math.min(total, Math.max(0, -section.getBoundingClientRect().top));
-      const stepHeight = total / slides.length;
-      const next = Math.min(slides.length - 1, Math.floor(scrolled / stepHeight));
+      // Divide em N segmentos iguais; usa o centro do viewport para trocar de slide
+      const progress = scrolled / total;
+      const next = Math.min(
+        slides.length - 1,
+        Math.max(0, Math.floor(progress * slides.length)),
+      );
       setActiveIndex(next);
     };
 
@@ -56,7 +61,7 @@ export function ScrollingFeatureShowcase({
     if (!section) return;
     const total = section.offsetHeight - window.innerHeight;
     const stepHeight = total / slides.length;
-    const top = section.offsetTop + stepHeight * index;
+    const top = section.offsetTop + stepHeight * index + 1;
     window.scrollTo({ top, behavior: "smooth" });
   }
 
@@ -144,32 +149,26 @@ export function ScrollingFeatureShowcase({
             className="relative hidden items-center justify-center p-8 md:flex"
             style={{
               backgroundImage: `
-                linear-gradient(to right, rgba(8, 11, 18, 0.08) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(8, 11, 18, 0.08) 1px, transparent 1px)
+                linear-gradient(to right, rgba(7, 24, 47, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(7, 24, 47, 0.08) 1px, transparent 1px)
               `,
               backgroundSize: "3.5rem 3.5rem",
             }}
           >
-            <div className="relative h-[70vh] w-[78%] max-w-md overflow-hidden border border-black/10 shadow-[0_24px_80px_rgba(8,11,18,0.18)]">
-              <div
-                className="absolute inset-x-0 top-0 w-full transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateY(-${activeIndex * 100}%)` }}
-              >
-                {slides.map((slide) => (
-                  <div key={slide.title} className="h-[70vh] w-full">
-                    <img
-                      src={slide.image}
-                      alt={slide.title}
-                      className="h-full w-full object-cover"
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src =
-                          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80";
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
+            <div className="relative h-[min(70vh,640px)] w-[78%] max-w-md overflow-hidden border border-black/10 shadow-[0_24px_80px_rgba(7,24,47,0.16)]">
+              {slides.map((slide, index) => (
+                <div
+                  key={slide.title}
+                  className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                    index === activeIndex
+                      ? "translate-y-0 opacity-100"
+                      : "pointer-events-none translate-y-8 opacity-0"
+                  }`}
+                  aria-hidden={index !== activeIndex}
+                >
+                  <CaseMockup id={slide.mockup} />
+                </div>
+              ))}
             </div>
           </div>
         </div>

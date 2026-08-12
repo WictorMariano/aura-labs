@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -30,43 +30,49 @@
   --color-sand: var(--sand);
   --color-sand-foreground: var(--sand-foreground);
   --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-ink: var(--gold-ink);
   --color-void: var(--void);
-  --color-cyan-glow: var(--cyan-glow);
+  --color-cyan-glow: var(--gold-light);
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 4px;
 
-  --void: #080b12;
-  --cyan-glow: #4aa3ff;
-  --navy: oklch(0.246 0.048 254.5);
-  --navy-foreground: oklch(0.96 0.005 250);
-  --sand: oklch(0.943 0.014 85);
-  --sand-foreground: oklch(0.246 0.048 254.5);
-  --gold: oklch(0.71 0.107 78.5);
+  /* Aura Labs Brand System v2.0 */
+  --void: #07182f;
+  --navy: #0d2347;
+  --navy-foreground: #ffffff;
+  --gold: #c89538;
+  --gold-light: #f0c86c;
+  --gold-ink: #8e621f;
+  --sand: #f7f6f2;
+  --sand-foreground: #0d2347;
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.246 0.048 254.5);
-  --card: oklch(1 0 0);
-  --card-foreground: var(--foreground);
-  --primary: var(--gold);
-  --primary-foreground: oklch(0.19 0.04 254.5);
-  --secondary: var(--sand);
-  --secondary-foreground: var(--sand-foreground);
-  --muted: oklch(0.965 0.006 250);
-  --muted-foreground: oklch(0.52 0.028 253);
-  --accent: var(--sand);
-  --accent-foreground: var(--sand-foreground);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.9 0.01 250);
-  --input: oklch(0.88 0.012 250);
-  --ring: var(--gold);
+  --background: #ffffff;
+  --foreground: #101828;
+  --card: #ffffff;
+  --card-foreground: #101828;
+  --primary: #c89538;
+  --primary-foreground: #07182f;
+  --secondary: #f7f6f2;
+  --secondary-foreground: #0d2347;
+  --muted: #f2f4f7;
+  --muted-foreground: #667085;
+  --accent: #f7f6f2;
+  --accent-foreground: #0d2347;
+  --destructive: #b42318;
+  --destructive-foreground: #ffffff;
+  --border: #e7ebf0;
+  --input: #e7ebf0;
+  --ring: #c89538;
 
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Inter Tight", "Helvetica Neue", system-ui, sans-serif;
+  --font-display: "Inter", Arial, sans-serif;
+  --font-sans: "Inter", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "DejaVu Sans Mono", ui-monospace, monospace;
 }
 
 @layer base {
@@ -93,45 +99,27 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-weight: 600;
+    letter-spacing: -0.025em;
   }
 }
 
 @utility eyebrow {
-  font-size: 0.8125rem;
-  letter-spacing: 0.2em;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 500;
 }
 
 @utility rule-line {
-  border-top: 1px solid color-mix(in oklch, currentColor 18%, transparent);
-}
-
-@keyframes hero-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes hero-orbit {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  border-top: 1px solid color-mix(in srgb, currentColor 14%, transparent);
 }
 
 @keyframes hero-fade-up {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -139,30 +127,16 @@
   }
 }
 
-@utility hero-float {
-  animation: hero-float 5.5s ease-in-out infinite;
-}
-
-@utility hero-orbit {
-  transform-origin: 50% 50%;
-  animation: hero-orbit 28s linear infinite;
-}
-
-@utility hero-orbit-slow {
-  animation-duration: 42s;
-  animation-direction: reverse;
-}
-
 @utility hero-fade-up {
-  animation: hero-fade-up 0.9s ease-out both;
+  animation: hero-fade-up 0.85s ease-out both;
 }
 
-/* Parallax — Quem somos (Osmo layers pattern) */
+/* Parallax — Quem somos */
 .parallax {
   width: 100%;
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: var(--void);
   color: #fff;
 }
 
@@ -183,7 +157,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #000;
+  background: var(--void);
 }
 
 .parallax__layers {
@@ -225,18 +199,18 @@
   text-align: center;
   text-transform: none;
   margin: 0 0.075em 0.1em 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-size: 11vw;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   position: relative;
   color: #fff;
 }
 
 .parallax__fade {
   z-index: 30;
-  --color-dark-rgb: 0, 0, 0;
+  --color-dark-rgb: 7, 24, 47;
   background: linear-gradient(
     to top,
     rgba(var(--color-dark-rgb), 1) 0%,
@@ -264,7 +238,7 @@
 
 .parallax__black-line-overflow {
   z-index: 20;
-  background-color: #000;
+  background-color: var(--void);
   width: 100%;
   height: 2px;
   position: absolute;
@@ -279,7 +253,7 @@
   min-height: 100svh;
   display: flex;
   position: relative;
-  background: #000;
+  background: var(--void);
 }
 
 .parallax__content-inner {
@@ -289,20 +263,19 @@
 }
 
 .parallax__mark {
-  width: 2.75rem;
+  width: 3.25rem;
   height: auto;
   margin-inline: auto;
   margin-bottom: 1.75rem;
-  color: var(--gold);
 }
 
 .parallax__content-title {
   margin-top: 1.25rem;
   font-family: var(--font-display);
   font-size: clamp(2rem, 4.5vw, 3.25rem);
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: #fff;
 }
 

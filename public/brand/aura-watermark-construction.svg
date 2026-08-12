@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 250" role="img" aria-label="Construção geométrica Aura Labs">
+  <g fill="none" stroke="#0D2347" stroke-width="0.7" opacity="0.16">
+    <rect x="65" y="58" width="223" height="179"/>
+    <line x1="206" y1="43" x2="206" y2="244"/>
+    <line x1="52" y1="164" x2="300" y2="164"/>
+    <line x1="206" y1="58" x2="124" y2="237"/>
+    <line x1="206" y1="58" x2="276" y2="212"/>
+    <line x1="124" y1="237" x2="276" y2="212"/>
+    <circle cx="206" cy="148" r="89.5"/>
+    <circle cx="206" cy="148" r="55.3"/>
+    <circle cx="260.8" cy="92.8" r="34.2"/>
+    <path d="M65 237 C65 138.1 145.1 58 244 58"/>
+  </g>
+  <g fill="none" stroke="#C89538" stroke-width="0.8" opacity="0.34" stroke-dasharray="2 2">
+    <rect x="65" y="58" width="223" height="137.8"/>
+    <path d="M244 58 C268.3 58 288 77.7 288 102 C288 126.3 268.3 146 244 146 C219.7 146 200 126.3 200 102 C200 77.7 219.7 58 244 58Z"/>
+  </g>
+  <path d="M205 58 L124 237 L125 237 L205 82 L271 207 L276 212 L206 58 Z" fill="#0D2347" opacity="0.22"/>
+  <path d="M65 164.4 C92 160.6 119 158.9 148 160.5 C184 162.3 218 175.4 245 191.7 C266.5 204.8 281.2 221.8 288 237 C281.2 231.7 270.2 216.8 247 199.3 C204.6 167.7 133.7 158.4 65 165.2 Z" fill="#C89538" opacity="0.38"/>
+  <g fill="#C89538" opacity="0.55">
+    <circle cx="206" cy="58" r="1.6"/><circle cx="205" cy="82" r="1.6"/><circle cx="124" cy="237" r="1.6"/><circle cx="276" cy="212" r="1.6"/><circle cx="65" cy="164.4" r="1.6"/><circle cx="288" cy="237" r="1.6"/>
+  </g>
+</svg>

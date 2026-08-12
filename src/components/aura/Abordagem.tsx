@@ -105,15 +105,17 @@ export function Abordagem() {
   return (
     <section id="abordagem" ref={rootRef} className="bg-background py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <p className="eyebrow text-gold">Abordagem</p>
-        <h2 className="mt-8 max-w-3xl text-4xl leading-tight sm:text-5xl lg:text-6xl">
-          Como conduzimos um sistema proprietário.
-        </h2>
-        <p className="mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground">
-          A Aura Labs projeta e desenvolve sistemas digitais proprietários, combinando
-          inteligência artificial, agentes de IA governados, blockchain e arquitetura de
-          software para resolver desafios complexos de negócios.
-        </p>
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow text-gold">Abordagem</p>
+          <h2 className="mt-8 text-4xl leading-tight sm:text-5xl lg:text-6xl">
+            Como conduzimos um sistema proprietário.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-xl leading-relaxed text-muted-foreground">
+            A Aura Labs projeta e desenvolve sistemas digitais proprietários, combinando
+            inteligência artificial, agentes de IA governados, blockchain e arquitetura de
+            software para resolver desafios complexos de negócios.
+          </p>
+        </div>
 
         <div className="relative mt-20" data-timeline-track>
           {/* Linha base */}

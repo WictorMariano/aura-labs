@@ -67,7 +67,7 @@ export function SobreNos() {
 
   return (
     <div id="sobre" className="parallax" ref={parallaxRef}>
-      <section className="parallax__header" aria-label="Quem somos">
+      <section className="parallax__header" aria-label="Aura Labs">
         <div className="parallax__visuals">
           <div className="parallax__black-line-overflow" aria-hidden="true" />
           <div data-parallax-layers className="parallax__layers">
@@ -88,7 +88,7 @@ export function SobreNos() {
               className="parallax__layer-img"
             />
             <div data-parallax-layer="3" className="parallax__layer-title">
-              <h2 className="parallax__title">Quem somos</h2>
+              <h2 className="parallax__title">Aura Labs</h2>
             </div>
             <img
               src="/osmo-layer-1.webp"
@@ -105,18 +105,6 @@ export function SobreNos() {
 
       <section className="parallax__content">
         <div className="parallax__content-inner">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100%"
-            viewBox="0 0 22 20"
-            fill="none"
-            className="parallax__mark"
-            aria-hidden="true"
-          >
-            <path d="M11 1 21 19H1L11 1Z" stroke="currentColor" strokeWidth="1.25" />
-            <path d="M11 8.5 15.5 19h-9L11 8.5Z" fill="currentColor" opacity="0.5" />
-          </svg>
-          <p className="eyebrow text-gold">Aura Labs</p>
           <h3 className="parallax__content-title">
             Engenharia de IA e blockchain com alma e responsabilidade.
           </h3>

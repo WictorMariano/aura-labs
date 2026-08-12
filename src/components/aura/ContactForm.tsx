@@ -41,24 +41,21 @@ export function ContactForm() {
   }
 
   const fieldClass =
-    "w-full border-b border-sand-foreground/20 bg-transparent py-3.5 text-base text-sand-foreground outline-none transition-colors placeholder:text-sand-foreground/40 focus:border-gold";
+    "w-full border-b border-white/20 bg-transparent py-3.5 text-base text-white outline-none transition-colors placeholder:text-white/35 focus:border-gold";
 
   if (submitted) {
     return (
-      <div
-        className="flex min-h-[420px] flex-col justify-center border border-sand-foreground/10 bg-sand px-7 py-10 sm:px-10"
-        role="status"
-      >
+      <div className="flex h-full min-h-[420px] flex-col justify-center" role="status">
         <p className="eyebrow text-gold">Recebido</p>
-        <h3 className="mt-6 font-display text-3xl leading-tight text-sand-foreground sm:text-4xl">
+        <h3 className="mt-6 font-display text-3xl leading-tight text-white sm:text-4xl">
           Obrigado, {values.nome.split(" ")[0]}.
         </h3>
-        <p className="mt-4 max-w-md text-lg leading-relaxed text-sand-foreground/70">
+        <p className="mt-4 max-w-md text-lg leading-relaxed text-white/65">
           Seus dados foram validados. Em breve o envio automático estará ativo; por agora, fale
           conosco em{" "}
           <a
             href="mailto:contato@auralabs.com.br"
-            className="text-sand-foreground underline decoration-gold/60 underline-offset-4 transition-colors hover:text-gold"
+            className="text-white underline decoration-gold/60 underline-offset-4 transition-colors hover:text-gold"
           >
             contato@auralabs.com.br
           </a>
@@ -70,7 +67,7 @@ export function ContactForm() {
             setSubmitted(false);
             setValues({ nome: "", email: "", organizacao: "", desafio: "" });
           }}
-          className="mt-10 inline-flex w-fit items-center gap-2 text-sm font-medium tracking-wide text-sand-foreground transition-colors hover:text-gold"
+          className="mt-10 inline-flex w-fit items-center gap-2 text-sm font-medium tracking-wide text-white transition-colors hover:text-gold"
         >
           Enviar outra mensagem
           <span aria-hidden="true">→</span>
@@ -80,15 +77,11 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      noValidate
-      className="border border-sand-foreground/10 bg-sand px-7 py-10 text-sand-foreground sm:px-10 sm:py-12"
-    >
+    <form onSubmit={onSubmit} noValidate className="flex h-full flex-col text-white">
       <div className="space-y-8">
         <div className="grid gap-8 sm:grid-cols-2">
           <div>
-            <label htmlFor="nome" className="eyebrow text-sand-foreground/55">
+            <label htmlFor="nome" className="eyebrow text-white/45">
               Nome
             </label>
             <input
@@ -102,13 +95,13 @@ export function ContactForm() {
               autoComplete="name"
             />
             {errors.nome && (
-              <p id="nome-error" className="mt-2 text-sm text-destructive">
+              <p id="nome-error" className="mt-2 text-sm text-red-300">
                 {errors.nome}
               </p>
             )}
           </div>
           <div>
-            <label htmlFor="email" className="eyebrow text-sand-foreground/55">
+            <label htmlFor="email" className="eyebrow text-white/45">
               E-mail
             </label>
             <input
@@ -123,7 +116,7 @@ export function ContactForm() {
               autoComplete="email"
             />
             {errors.email && (
-              <p id="email-error" className="mt-2 text-sm text-destructive">
+              <p id="email-error" className="mt-2 text-sm text-red-300">
                 {errors.email}
               </p>
             )}
@@ -131,7 +124,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="organizacao" className="eyebrow text-sand-foreground/55">
+          <label htmlFor="organizacao" className="eyebrow text-white/45">
             Organização <span className="normal-case tracking-normal">(opcional)</span>
           </label>
           <input
@@ -145,7 +138,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="desafio" className="eyebrow text-sand-foreground/55">
+          <label htmlFor="desafio" className="eyebrow text-white/45">
             Desafio a resolver
           </label>
           <textarea
@@ -159,15 +152,15 @@ export function ContactForm() {
             placeholder="Contexto, restrições e o que precisa ficar sob governança."
           />
           {errors.desafio && (
-            <p id="desafio-error" className="mt-2 text-sm text-destructive">
+            <p id="desafio-error" className="mt-2 text-sm text-red-300">
               {errors.desafio}
             </p>
           )}
         </div>
       </div>
 
-      <div className="mt-10 flex flex-col gap-6 border-t border-sand-foreground/10 pt-8 sm:flex-row sm:items-end sm:justify-between">
-        <ul className="space-y-2 text-sm text-sand-foreground/60">
+      <div className="mt-auto flex flex-col gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-end sm:justify-between">
+        <ul className="space-y-2 text-sm text-white/50">
           {NEXT_STEPS.map((step) => (
             <li key={step} className="flex items-center gap-2.5">
               <span className="h-1 w-1 shrink-0 rounded-full bg-gold" aria-hidden="true" />
@@ -177,7 +170,7 @@ export function ContactForm() {
         </ul>
         <button
           type="submit"
-          className="inline-flex items-center justify-center bg-navy px-8 py-3.5 text-sm font-medium tracking-wide text-navy-foreground transition-colors hover:bg-void"
+          className="inline-flex items-center justify-center bg-sand px-8 py-3.5 text-sm font-medium tracking-wide text-sand-foreground transition-colors hover:bg-white"
         >
           Solicita orçamento
         </button>

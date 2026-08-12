@@ -1,24 +1,11 @@
-import { WaterRippleImage } from "@/components/aura/WaterRippleImage";
-
 export function HeroVisual() {
   return (
-    <div className="hero-visual relative h-full w-full min-h-0">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-[8%] rounded-full bg-[radial-gradient(circle,rgba(56,140,255,0.22),transparent_65%)] blur-2xl"
+    <div className="hero-visual relative flex h-full w-full min-h-0 items-center justify-center p-6 lg:p-10">
+      <img
+        src="/brand/aura-symbol-negative.svg"
+        alt=""
+        className="aura-logo h-full max-h-[78vh] w-auto max-w-full object-contain"
       />
-
-      <div className="absolute inset-0 z-10 overflow-hidden">
-        <WaterRippleImage
-          src="/imagens%20gerais/hero-aura-a.png?v=portrait"
-          blueish={0.55}
-          scale={7}
-          illumination={0.14}
-          surfaceDistortion={0.06}
-          waterDistortion={0.025}
-          className="h-full w-full"
-        />
-      </div>
     </div>
   );
 }
