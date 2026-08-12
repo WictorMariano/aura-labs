@@ -726,9 +726,9 @@ function Index() {
 
         {/* CONTATO */}
         <section id="contato" className="relative overflow-hidden bg-sand py-20 sm:py-28">
-          <div className="relative mx-auto max-w-6xl px-6">
+          <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-0">
             <div className="grid overflow-hidden lg:grid-cols-2 lg:items-stretch">
-              <div className="bg-navy px-8 py-12 text-navy-foreground sm:px-10 sm:py-14 lg:px-12 lg:py-16">
+              <div className="bg-navy px-6 py-12 text-navy-foreground sm:px-10 sm:py-14 md:px-12 lg:px-16 lg:py-16">
                 <SectionLabel>Contato</SectionLabel>
                 <h2 className="mt-8 max-w-md text-4xl leading-tight sm:text-5xl">
                   Comece pelo desafio, não pela tecnologia.
@@ -758,7 +758,7 @@ function Index() {
                 </div>
               </div>
 
-              <div className="bg-void px-8 py-12 text-white sm:px-10 sm:py-14 lg:px-12 lg:py-16">
+              <div className="bg-void px-6 py-12 text-white sm:px-10 sm:py-14 md:px-12 lg:px-16 lg:py-16">
                 <ContactForm />
               </div>
             </div>
