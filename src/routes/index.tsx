@@ -154,6 +154,20 @@ const TIME = [
     initials: "BV",
     photo: "/team/bruno-velloso.png",
   },
+  {
+    name: "Prof. Diego Carvalho",
+    role: "SMC Insights",
+    bio: "Conecta pesquisa aplicada e inteligência de mercado à tomada de decisão, traduzindo dados e contexto estratégico em direção clara para projetos de alto impacto.",
+    initials: "DC",
+    photo: "/team/conrado-eugine.png",
+  },
+  {
+    name: "Thiago Henrique",
+    role: "Host e Analista",
+    bio: "Conduz conversas e análises que traduzem complexidade técnica em linguagem clara, aproximando mercado, produto e decisão estratégica.",
+    initials: "TH",
+    photo: "/team/luiz.png",
+  },
 ];
 
 const PUBLICO: { tag: string; t: string; d: string; icon: ReactNode }[] = [
@@ -624,7 +638,7 @@ function Index() {
               </p>
             </div>
 
-            <div className="mx-auto mt-16 grid max-w-sm gap-6">
+            <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {TIME.map((person) => (
                 <article
                   key={person.name}
