@@ -131,45 +131,6 @@
   animation: hero-fade-up 0.85s ease-out both;
 }
 
-/* Equipe — carrossel lateral infinito */
-.team-marquee {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-}
-
-.team-marquee__track {
-  display: flex;
-  width: max-content;
-  gap: 1.5rem;
-  padding-inline: 1.5rem;
-  animation: team-marquee 48s linear infinite;
-}
-
-.team-marquee:hover .team-marquee__track {
-  animation-play-state: paused;
-}
-
-@keyframes team-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .team-marquee__track {
-    animation: none;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 72rem;
-    margin-inline: auto;
-    justify-content: center;
-  }
-}
-
 /* Parallax — Quem somos */
 .parallax {
   width: 100%;

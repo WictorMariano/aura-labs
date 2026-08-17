@@ -154,41 +154,6 @@ const TIME = [
     initials: "BV",
     photo: "/team/bruno-velloso.png",
   },
-  {
-    name: "Prof. Diego Carvalho",
-    role: "SMC Insights",
-    bio: "Conecta pesquisa aplicada e inteligência de mercado à tomada de decisão, traduzindo dados e contexto estratégico em direção clara para projetos de alto impacto.",
-    initials: "DC",
-    photo: "/team/conrado-eugine.png",
-  },
-  {
-    name: "Thiago Henrique",
-    role: "Host e Analista",
-    bio: "Conduz conversas e análises que traduzem complexidade técnica em linguagem clara, aproximando mercado, produto e decisão estratégica.",
-    initials: "TH",
-    photo: "/team/luiz.png",
-  },
-  {
-    name: "Vagner — O Mestre",
-    role: "Macro e Fluxo",
-    bio: "Lê o macro e o fluxo de mercado com precisão, conectando contexto econômico, timing e leitura operacional para orientar decisões com clareza.",
-    initials: "VM",
-    photo: "/team/vagner-o-mestre.png",
-  },
-  {
-    name: "Eron Ricardo",
-    role: "Onboarding",
-    bio: "Cuida da entrada e da adaptação de cada pessoa e cliente, garantindo clareza, ritmo e alinhamento desde o primeiro contato com a Aura Labs.",
-    initials: "ER",
-    photo: "/team/eron-ricardo.png",
-  },
-  {
-    name: "Bruno Costa",
-    role: "Host e Analista",
-    bio: "Conduz conversas e análises que traduzem complexidade técnica em linguagem clara, aproximando mercado, produto e decisão estratégica.",
-    initials: "BC",
-    photo: "/team/bruno-costa.png",
-  },
 ];
 
 const PUBLICO: { tag: string; t: string; d: string; icon: ReactNode }[] = [
@@ -647,7 +612,7 @@ function Index() {
         </section>
 
         {/* EQUIPE */}
-        <section id="equipe" className="overflow-hidden bg-background py-28">
+        <section id="equipe" className="bg-background py-28">
           <div className="mx-auto max-w-6xl px-6">
             <div className="mx-auto max-w-3xl text-center">
               <SectionLabel className="text-center">Equipe</SectionLabel>
@@ -658,21 +623,18 @@ function Index() {
                 Um time enxuto, com domínio técnico e responsabilidade direta pelo que entrega.
               </p>
             </div>
-          </div>
 
-          <div className="team-marquee mt-16" aria-label="Membros da equipe">
-            <div className="team-marquee__track">
-              {[...TIME, ...TIME].map((person, index) => (
+            <div className="mt-16 flex justify-center">
+              {TIME.map((person) => (
                 <article
-                  key={`${person.name}-${index}`}
-                  className="group flex w-[280px] shrink-0 flex-col overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-navy/30 sm:w-[320px]"
-                  aria-hidden={index >= TIME.length}
+                  key={person.name}
+                  className="group flex w-full max-w-sm flex-col overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-navy/30"
                 >
                   <div className="relative aspect-[4/5] overflow-hidden bg-void">
                     {person.photo ? (
                       <img
                         src={person.photo}
-                        alt={index < TIME.length ? person.name : ""}
+                        alt={person.name}
                         className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                       />
                     ) : (
@@ -690,10 +652,10 @@ function Index() {
                       className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-void/80 to-transparent"
                     />
                   </div>
-                  <div className="flex flex-1 flex-col border-t border-border px-5 py-6 sm:px-6">
+                  <div className="flex flex-1 flex-col border-t border-border px-6 py-7 sm:px-7">
                     <p className="eyebrow text-gold">{person.role}</p>
-                    <h3 className="mt-3 text-2xl leading-tight sm:text-3xl">{person.name}</h3>
-                    <p className="mt-3 flex-1 text-base leading-relaxed text-muted-foreground">
+                    <h3 className="mt-3 text-3xl leading-tight sm:text-4xl">{person.name}</h3>
+                    <p className="mt-4 flex-1 text-lg leading-relaxed text-muted-foreground">
                       {person.bio}
                     </p>
                   </div>
