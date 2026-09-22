@@ -1,6 +1,6 @@
 /** Base URL do site em produção. Defina VITE_SITE_URL no .env se for diferente. */
 export const SITE_URL = (
-  (import.meta.env.VITE_SITE_URL as string | undefined) ?? "https://auralabs.com.br"
+  (import.meta.env.VITE_SITE_URL as string | undefined) ?? "https://auralabs.digital"
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Aura Labs";
